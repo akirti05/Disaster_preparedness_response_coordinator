@@ -1,0 +1,84 @@
+/* Container for the Members page */
+.members-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-image: url('https://media.istockphoto.com/id/1385509455/vector/business-communication-concept.jpg?s=612x612&w=0&k=20&c=BqAT-opyxl84x3IKO4JMi6E8YB8AJIPU_7q49c8FojY='); /* Background image */
+    background-size: cover; /* Ensure the image covers the whole container */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    min-height: 100vh; /* Ensure the container covers the full viewport height */
+    color: #494848; /* Default text color */
+}
+
+/* Style for the search container */
+.search-container {
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    padding: 10px;
+    Width:40%;
+    margin-left: 30%; /* Center the search container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+
+}
+.p{
+    color:#fff;
+}
+
+/* Heading within search container */
+.search-container h2 {
+    margin-bottom: 2px;
+}
+
+/* Style for the label inside the search container */
+.search-container label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Style for the input fields */
+.search-container input {
+    padding: 5px;
+    margin-left: 10px;
+    border-radius: 4px; /* Rounded corners */
+    border: 1px solid #ddd; /* Light border color */
+    width: calc(50% - 150px); /* Width of the input field */
+}
+
+/* Style for the button */
+.search-container button {
+    padding: 5px 5px;
+    border-radius: 4px; /* Rounded corners */
+    border: none;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    width: 20%;
+}
+
+.search-container button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Style for messages */
+.message {
+    color: #28a745; /* Bootstrap success color */
+}
+
+.error {
+    color: #dc3545; /* Bootstrap danger color */
+}
+
+/* Style for the list items */
+.search-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.search-container li {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd; /* Light border color */
+    border-radius: 4px; /* Rounded corners */
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+}
