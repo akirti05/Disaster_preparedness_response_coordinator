@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './Resources.css'; // Import the CSS file
 
 function Resources() {
     const [resourceName, setResourceName] = useState('');
@@ -60,12 +59,12 @@ function Resources() {
     };
 
     return (
-        <div className="resources-page">
+        <div>
             <h1>Resources</h1>
-            <p className="resources-description">
+            <p>
                 Resources are essential for managing and mitigating the impacts of disasters. They include items such as first aid kits, water, food, shelter materials, and medical supplies. Proper resource management ensures that we are prepared for emergencies, reduces response times, and supports recovery efforts.
             </p>
-            <p className="resources-description">
+            <p>
                 <strong>Benefits of Effective Resource Management:</strong>
                 <ul>
                     <li><strong>Ensures Readiness:</strong> Properly managed resources allow us to respond effectively to various disaster scenarios.</li>
@@ -75,7 +74,7 @@ function Resources() {
                     <li><strong>Supports Recovery Efforts:</strong> Resources play a critical role in rebuilding and restoring normalcy after a disaster.</li>
                 </ul>
             </p>
-            <p className="resources-description">
+            <p>
                 <strong>Useful Websites for Accurate Information on Resources:</strong>
                 <ul>
                     <li><a href="https://www.redcross.org" target="_blank" rel="noopener noreferrer">American Red Cross</a></li>
@@ -84,33 +83,31 @@ function Resources() {
                     <li><a href="https://www.who.int" target="_blank" rel="noopener noreferrer">World Health Organization (WHO)</a></li>
                 </ul>
             </p>
-            <form onSubmit={handleSubmit} className="resources-form-container">
-                <div className="resources-form">
-                    <div>
-                        <label>
-                            Resource Name:
-                            <input
-                                type="text"
-                                value={resourceName}
-                                onChange={(e) => setResourceName(e.target.value)}
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Resource Quantity:
-                            <input
-                                type="text"
-                                value={resourceQuantity}
-                                onChange={(e) => setResourceQuantity(e.target.value)}
-                            />
-                        </label>
-                    </div>
-                    <button type="submit">Add Resource</button>
-                    {error && <p className="error-message">{error}</p>}
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label>
+                        Resource Name:
+                        <input
+                            type="text"
+                            value={resourceName}
+                            onChange={(e) => setResourceName(e.target.value)}
+                        />
+                    </label>
                 </div>
+                <div>
+                    <label>
+                        Resource Quantity:
+                        <input
+                            type="text"
+                            value={resourceQuantity}
+                            onChange={(e) => setResourceQuantity(e.target.value)}
+                        />
+                    </label>
+                </div>
+                <button type="submit">Add Resource</button>
+                {error && <p className="error-message">{error}</p>}
             </form>
-            <ul className="resources-list">
+            <ul>
                 {resources.map((resource, index) => (
                     <li key={index}>{resource.name}: {resource.quantity}</li>
                 ))}

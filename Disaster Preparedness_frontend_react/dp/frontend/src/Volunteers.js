@@ -62,40 +62,38 @@ function Volunteers() {
     };
 
     return (
-        <div className="volunteers-page">
-            <div className="volunteer-form-container">
-                <h1>Volunteers</h1>
-                <form className="volunteer-form" onSubmit={handleSubmit}>
-                    <div>
-                        <label>
-                            Volunteer Name:
-                            <input
-                                type="text"
-                                value={volunteerName}
-                                onChange={(e) => setVolunteerName(e.target.value)}
-                            />
-                        </label>
-                    </div>
-                    <button type="submit" disabled={!volunteerName}>Add Volunteer</button>
-                    <button type="button" className="list-volunteers-button" onClick={handleListVolunteers}>
-                        {showVolunteers ? 'Hide Volunteers' : 'List Volunteers'}
-                    </button>
-                    {showVolunteers && (
-                        <div className="volunteer-list-container">
-                            <h2>Volunteer List</h2>
-                            <ul className="volunteer-list">
-                                {volunteers.map((volunteer) => (
-                                    <li key={volunteer.id}>
-                                        ID {volunteer.id}: {volunteer.name}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
-                </form>
-                {message && <p className="success-message">{message}</p>}
-                {error && <p className="error-message">{error}</p>}
-            </div>
+        <div>
+            <h1>Volunteers</h1>
+            <form className="volunteer-form" onSubmit={handleSubmit}>
+                <div>
+                    <label>
+                        Volunteer Name:
+                        <input
+                            type="text"
+                            value={volunteerName}
+                            onChange={(e) => setVolunteerName(e.target.value)}
+                        />
+                    </label>
+                </div>
+                <button type="submit" disabled={!volunteerName}>Add Volunteer</button>
+            </form>
+            {message && <p className="success-message">{message}</p>}
+            {error && <p className="error-message">{error}</p>}
+            <button className="list-volunteers-button" onClick={handleListVolunteers}>
+                {showVolunteers ? 'Hide Volunteers' : 'List Volunteers'}
+            </button>
+            {showVolunteers && (
+                <div>
+                    <h2>Volunteer List</h2>
+                    <ul className="volunteer-list">
+                        {volunteers.map((volunteer) => (
+                            <li key={volunteer.id}>
+                                ID {volunteer.id}: {volunteer.name}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </div>
     );
 }

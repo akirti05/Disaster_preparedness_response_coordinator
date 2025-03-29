@@ -1,7 +1,7 @@
+// src/SignUpLoginPage.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from './AuthContext';
-import './SignUpLoginPage.css';
+import './SignUpLoginPage.css'; // Create this CSS file for styling if needed
 
 function SignUpLoginPage() {
     const [isLoginMode, setIsLoginMode] = useState(true);
@@ -10,7 +10,6 @@ function SignUpLoginPage() {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const navigate = useNavigate();
-    const { login } = useAuth();
 
     const toggleMode = () => {
         setIsLoginMode(!isLoginMode);
@@ -32,8 +31,7 @@ function SignUpLoginPage() {
             const storedPassword = localStorage.getItem(username);
             if (storedPassword === password) {
                 setSuccess('Login successful!');
-                login(); // Set authentication state to true
-                navigate('/home'); // Redirect to Home page
+                navigate('/'); // Redirect to Home page
             } else {
                 setError('Invalid username or password');
             }
@@ -45,41 +43,42 @@ function SignUpLoginPage() {
                 setSuccess('Sign-up successful!');
                 setUsername('');
                 setPassword('');
-                login(); // Set authentication state to true
-                navigate('/home'); // Redirect to Home page
+                setTimeout(() => navigate('/'), 1000); // Redirect after 1 second
             }
         }
     };
 
     return (
         <div className="auth-container">
-            <h1>{isLoginMode ? 'Login' : 'Sign Up'}</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="username">Username:</label>
-                    <input
-                        type="text"
-                        id="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <button type="submit">{isLoginMode ? 'Login' : 'Sign Up'}</button>
-                <button type="button" className="switch-button" onClick={toggleMode}>
+            <div className="form-container">
+                <h1>{isLoginMode ? 'Login' : 'Sign Up'}</h1>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label htmlFor="username">Username:</label>
+                        <input
+                            type="text"
+                            id="username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="password">Password:</label>
+                        <input
+                            type="password"
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <button type="submit">{isLoginMode ? 'Login' : 'Sign Up'}</button>
+                    <p>{error && <span className="error">{error}</span>}</p>
+                    <p>{success && <span className="success">{success}</span>}</p>
+                </form>
+                <button className="switch-button" onClick={toggleMode}>
                     {isLoginMode ? 'Switch to Sign Up' : 'Switch to Login'}
                 </button>
-                <p>{error && <span className="error">{error}</span>}</p>
-                <p>{success && <span className="success">{success}</span>}</p>
-            </form>
+            </div>
         </div>
     );
 }

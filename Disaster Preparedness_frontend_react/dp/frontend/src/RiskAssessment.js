@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './RiskAssessment.css'; // Import the CSS file
 
 function RiskAssessmentForm() {
     const [riskTypes, setRiskTypes] = useState([]);
@@ -86,44 +85,42 @@ function RiskAssessmentForm() {
     };
 
     return (
-        <div className="risk-assessment-page">
+        <div>
             <h1>Risk Assessment</h1>
-            <form onSubmit={handleSubmit} className="risk-assessment-form-container">
-                <div className="risk-assessment-form">
-                    <div>
-                        <label>
-                            Risk Type:
-                            <select
-                                value={selectedRiskType}
-                                onChange={(e) => setSelectedRiskType(e.target.value)}
-                            >
-                                <option value="">Select Risk Type</option>
-                                {riskTypes.map(risk => (
-                                    <option key={risk.type} value={risk.type}>{risk.type}</option>
-                                ))}
-                            </select>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Risk Level:
-                            <input
-                                type="number"
-                                value={riskLevel}
-                                onChange={(e) => setRiskLevel(e.target.value)}
-                            />
-                        </label>
-                    </div>
-                    <button type="submit">Add Risk Assessment</button>
-                    {error && <p className="error-message">{error}</p>}
-                    {success && <p className="success-message">{success}</p>}
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label>
+                        Risk Type:
+                        <select
+                            value={selectedRiskType}
+                            onChange={(e) => setSelectedRiskType(e.target.value)}
+                        >
+                            <option value="">Select Risk Type</option>
+                            {riskTypes.map(risk => (
+                                <option key={risk.type} value={risk.type}>{risk.type}</option>
+                            ))}
+                        </select>
+                    </label>
                 </div>
-                <button onClick={toggleAssessments} type="button" className="toggle-assessments-button">
-                    {showAssessments ? 'Hide Existing Risk Assessments' : 'Show Existing Risk Assessments'}
-                </button>
+                <div>
+                    <label>
+                        Risk Level:
+                        <input
+                            type="number"
+                            value={riskLevel}
+                            onChange={(e) => setRiskLevel(e.target.value)}
+                        />
+                    </label>
+                </div>
+                <button type="submit">Add Risk Assessment</button>
+                {error && <p className="error-message">{error}</p>}
+                {success && <p className="success-message">{success}</p>}
             </form>
+            <button onClick={toggleAssessments}>
+                {showAssessments ? 'Hide Existing Risk Assessments' : 'Show Existing Risk Assessments'}
+            </button>
             {showAssessments && (
-                <div className="assessments-list">
+                <div>
                     <h2>Existing Risk Assessments</h2>
                     <ul>
                         {assessments.map((assessment) => (

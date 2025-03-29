@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './Communications.css'; // Import the CSS file
 
 function Communications() {
     const [message, setMessage] = useState('');
@@ -32,34 +31,30 @@ function Communications() {
     };
 
     return (
-        <div className="communications-page">
-            <div className="communications-description">
-                <h1>Communications</h1>
-                <p>
-                    Keeping a record of communications during a disaster is crucial for coordination and ensuring that all relevant information is shared among team members.
-                </p>
-            </div>
-            <div className="communications-form-container">
-                <form className="communications-form" onSubmit={handleSubmit}>
-                    <div>
-                        <label>
-                            Message:
-                            <textarea
-                                value={message}
-                                onChange={(e) => setMessage(e.target.value)}
-                            />
-                        </label>
-                    </div>
-                    <button type="submit">Add Message</button>
-                </form>
-                <ul className="communications-list">
-                    {communications.map((communication) => (
-                        <li key={communication.id}>
-                            {new Date(communication.timestamp).toLocaleString()}: {communication.message}
-                        </li>
-                    ))}
-                </ul>
-            </div>
+        <div>
+            <h1>Communications</h1>
+            <p>
+                Keeping a record of communications during a disaster is crucial for coordination and ensuring that all relevant information is shared among team members.
+            </p>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label>
+                        Message:
+                        <textarea
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                        />
+                    </label>
+                </div>
+                <button type="submit">Add Message</button>
+            </form>
+            <ul>
+                {communications.map((communication) => (
+                    <li key={communication.id}>
+                        {communication.timestamp}: {communication.message}
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 }
